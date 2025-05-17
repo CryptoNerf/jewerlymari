@@ -1,0 +1,2 @@
+web: gunicorn StoreMari.wsgi
+release: python manage.py collectstatic --noinput

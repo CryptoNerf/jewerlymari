@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "deps/styles/regpage.css" %}">
+{% endblock css %}
+
+{% block content %}
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col lg-5"></div>
+            <div class="col-lg-2 col-md-12">
+                <div class="row">
+                    <div class="imagereg">
+                        <img class="iconreg" src="{% static "deps/image/СтрелкаДляРегистрации.png" %}" alt="icon">
+                    </div>
+                </div>
+                <form method="post" action="{% url 'accounts:register' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="button">
+                        <button type="submit" class="btn btn-light custom-btn">Зарегистрироваться</button>
+                    </div>
+                </form>
+                <p class="log">Уже есть аккаунт? <a href="{% url 'accounts:login' %}">Войти</a></p>
+            </div>
+            <div class="col lg-5"></div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

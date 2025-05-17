@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load carts_tags %}
+{% block css %}
+<link rel="stylesheet" href="{% static "deps/styles/acoounts_cart.css" %}">
+{% endblock css %}
+
+{% user_carts request as carts %}
+
+{% block content %}
+<div class="row">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                <h3 class="text-center mb-4">Корзина</h3>
+                <div class="container" id="cart-items-container">
+                    <!-- Разметка корзины -->
+                    {% include "carts/includes/included_cart.html" %}
+                    <!-- Закончилась разметка корзины -->
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-dark" href="{% url "orders:create_order" %}">
+                        Оформить заказ
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

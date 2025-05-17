@@ -1,0 +1,46 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+
+}
+
+.navigator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    margin-left: 20px;
+}
+
+header {
+margin-bottom: 50px;
+}
+
+.heart {
+    margin-top: 200px;
+}
+
+.ringteeth img {
+    margin-top: 160px;
+    width: 210px;
+}
+
+.col {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.hidden-block {
+    opacity: 0;
+    transition: 2s;
+}
+
+.on-hover:hover+ .hidden-block {
+    opacity: 1;
+    transition: 1s;
+}
+
+.col .hidden-block {
+    position: absolute;
+}

@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "deps/styles/loginpage.css" %}">
+{% endblock css %}
+
+{% block content %}
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col lg-5"></div>
+            <div class="col-lg-2 col-md-12">
+                <div class="row">
+                    <div class="imagelogin">
+                        <img class="iconlogin" src="{% static 'deps/image/СердечкоДляВхода.png' %}" alt="icon">
+                    </div>
+                </div>
+                <form id="form1" method="post" action="{% url 'accounts:login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="button">
+                        <button type="submit" class="btn btn-light custom-btn">Войти</button>
+                    </div>
+                </form>
+                <p class="reg">Нет аккаунта? <a href="{% url 'accounts:register' %}">Зарегистрироваться</a></p>
+            </div>
+            <div class="col lg-5"></div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

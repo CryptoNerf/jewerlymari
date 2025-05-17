@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top: 50px;">
+            <h2>Оплата через QR-код</h2>  <!-- Подпись -->
+            <p>Пожалуйста, используйте банковское приложение для сканирования QR-кода и оплаты вашего заказа.</p>  <!-- Инструкции -->
+            {% if qr_image_url %}
+            <div style="border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; border-radius: 10px;">  <!-- Рамка -->
+                <img src="{{ qr_image_url }}" alt="QR Code" style="max-width: 200px; max-height: 200px;">  <!-- Уменьшение размера -->
+            </div>
+            {% else %}
+            <div>QR-код не найден.</div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

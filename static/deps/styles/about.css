@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Bad Script&display=swap');
+
+body {
+    font-family: Bad Script, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Стили для шапки */
+.logo {
+    display: flex;
+    /* justify-content: center; */
+    /* margin-top: 2vh; */
+    margin-left: 12em;
+
+}
+
+.logomari {
+    width: 200px;
+    height: 100px;
+    margin-left: 20vh;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    margin-left: 15vh;
+    font-size: 1.5em;
+}
+
+.nav-link {
+    margin-right: 9vh;
+    color: black;
+    text-decoration: underline;
+}
+
+.custom1 {
+    text-decoration: none;
+}
+
+.btn-light.custom-btn1 {
+    background-color: rgb(229, 229, 229);
+    /* margin-left: 80%; */
+    font-size: 1em;
+
+}
+
+.navigator a {
+    color: black;
+    padding: 40px;
+}
+
+.textabout h1{
+    text-align: left;
+    font-size: 40px;
+    margin-left: 2.6em;
+    margin-top: 10%;
+
+}
+.pabout {
+    text-align: left;
+    font-size: 24px;
+    margin-left: 4em;
+}
+
+.textaboutmari img {
+    width: 510px;
+    border-radius: 20px;
+    margin-left: 8em;
+    margin-bottom: 50px;
+    margin-right: 3em;
+    /* max-height: 600px; */
+}
+
+.textabout a {
+    text-decoration: none; /* Убирает подчёркивание у всех ссылок внутри .textabout */
+}
+
+.textabout a img {
+    vertical-align: middle; /* Выравнивает иконку по центру строки */
+}
+
+.textabout p a {
+    color: inherit; /* Сохраняет текущий цвет текста для ссылки */
+}
+
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(140, 140, 140);
+    font-size: 0.8em;
+    padding-bottom: 12px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 550px) {
+    .logomari {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        margin-left: 15px;
+
+    }
+}
+
+@media (max-width: 991px) {
+    .textabout h1 {
+        margin-left: 20px;
+    }
+
+
+@media (max-width: 991px) {
+    .pabout {
+        margin-left: 20px;
+    }
+
+
+@media (max-width: 460px) {
+    .textabout h1 {
+        margin-left: 20px;
+    }
+
+@media (max-width: 460px) {
+    .pabout {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 460px) {
+    .textaboutmari img {
+        max-width: 100%;
+        margin: 0;
+        margin-bottom: 50px;
+    }
+}

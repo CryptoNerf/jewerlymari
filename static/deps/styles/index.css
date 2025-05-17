@@ -1,0 +1,38 @@
+* {
+    margin: none;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Bad Script&display=swap');
+
+.navigator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8vh;
+}
+
+.about {
+    padding: auto;
+    margin: auto;
+}
+
+.store {
+    padding: auto;
+    margin: auto;
+}
+
+.login {
+    padding: auto;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 24vh ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+

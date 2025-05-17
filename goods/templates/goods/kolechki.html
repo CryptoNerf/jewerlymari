@@ -1,0 +1,59 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load goods_tags %}
+
+{% block section %}
+<section>
+    <div class="container-fluid mt-4">
+        <div class="row px-2">
+            <div class="col-lg-3 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 sidebar slidecustom1 my-4">
+                        {% tag_categories as categories %}
+                        {% for category in catalog %}
+                        <li class="nav-item">
+                            <a class="nav-link p-0 pt-2" href="{% url "catalog:buypage" category.slug %}">{{ category.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    {% for product in kolechki %}
+                    <div class="col-lg-4 col-md-6 mt-4">
+                        <div class="card">
+                            {% if product.image %}
+                                <a href="{% url "catalog:product" product.slug %}"><img src="{{ product.image.url }}" class="card-img-top" alt="card"></a>
+                            {% else %}
+                                <a href="{{ product.url }}"><img src="{% static "deps/image/кольцочёрное.png" %}" class="card-img-top" alt="card"></a>
+                            {% endif %}
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="{% url "catalog:product" product.slug %}">{{ product.name }}</a></h4>
+                                <p class="product_id">id: {{ product.display_id }}</p>
+                                {% if product.discount %}
+                                    <p><strong><s>{{ product.price }}</s>$</strong></p>
+                                    <p><strong>{{ product.sell_price }}$</strong></p>
+                                    <span class='badge bh-bg-warning text-dark'>Скидка {{ product.discount }}%</span>
+                                {% else %}
+                                    <p><strong>{{ product.price }}</strong></p>
+                                {% endif %}
+
+                                <a href="cart.html" class="btn btn-light custom-btn">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="switchingnumbers">
+                    <p class="switchingnumbers"> <span class="number">1</span> <a href="buypage2.html"><span
+                                class="number">2</span></a> <a href=""><span class="number"></span></a></p>
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock section %}

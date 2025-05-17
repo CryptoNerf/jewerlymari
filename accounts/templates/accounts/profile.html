@@ -1,0 +1,90 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'deps/styles/profile.css' %}">
+{% endblock css %}
+{% load carts_tags %}
+
+{% block content %}
+<section>
+    <div class="container py-5">
+        <p class="yourpassport">МОЙ ПАСПОРТ</p>
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-9 col-lg-7 col-xl-5 custom">
+                <div class="card" style="border-radius: 16px; color: black;">
+                    <div class="card-body p-4">
+                        <div class="text-black d-flex align-items-center">
+                            <div class="flex-shrink-0 me-4">
+                                {% if user.avatar %}
+                                    <img src="{{ user.avatar.url }}" alt="User avatar" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                                {% else %}
+                                    <img src="{% static 'deps/image/СердечкоДляВхода.png' %}" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                                {% endif %}
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
+                                    <div>
+                                        <h5><strong>Мои данные:</strong></h5>
+                                        <h5 class="mb-1">{{ user.username }}</h5>
+                                        <h5 class="mb-1">{{ user.email }}</h5>
+                                    </div>
+                                </div>
+                                <a class="btn btn-light custom-btn mb-2" href="{% url 'accounts:logout' %}">Выйти</a>
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="btn btn-light custom-btn">Сохранить изменения</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                    <h3 class="text-center mb-4">Мои заказы</h3>
+                    {% if orders %}
+                    <div class="container">
+                        <div class="accordion" id="accordionExample">
+                            {% for order in orders %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{ order.id }}">
+                                    <button class="accordion-button {% if order != orders.0 %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ order.id }}" aria-expanded="false" aria-controls="collapse{{ order.id }}">
+                                        Заказ № {{ order.id }} - {{ order.created_timestamp }} | Статус: <strong class="mx-2">{{ order.status }}</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ order.id }}" class="accordion-collapse collapse {% if order == orders.0 %}show{% endif %}" aria-labelledby="heading{{ order.id }}" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <table class="table table-hover table-striped">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Товар</th>
+                                                    <th>Количество</th>
+                                                    <th>Цена</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in order.orderitem_set.all %}
+                                                <tr>
+                                                    <td><a class="text-dark" href="{% url 'goods:product' item.product.slug %}">{{ item.product.name }}</a></td>
+                                                    <td>{{ item.quantity }}</td>
+                                                    <td>{{ item.price }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% else %}
+                    <h5 class="text-center">Ты ещё ничего не заказал( •̀ .̫ •́ )✧</h5>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

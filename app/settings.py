@@ -26,9 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$2k37l30c_7f4gkp!(1cbf9i3(28%mfuir7m@miadx^%j+wdem'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cryptonerf-jewerlymari-e0f8.twc1.net']
+ALLOWED_HOSTS = ['cryptonerf-jewerlymari-e0f8.twc1.net']
+
 
 
 # Application definition
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    "debug_toolbar",
+    # "debug_toolbar",
 
     'main',
     'goods',
@@ -140,19 +141,15 @@ USE_TZ = True
 import os
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
     ]
 
-MEDIA_URL = 'media/'
-
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 

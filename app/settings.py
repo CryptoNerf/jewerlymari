@@ -152,6 +152,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://cryptonerf-jewerlymari-e0f8.twc1.net',
+]
 
 
 INTERNAL_IPS = [
